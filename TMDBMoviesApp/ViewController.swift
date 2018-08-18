@@ -13,6 +13,11 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        let u  = UrlManager(apiKey: "55957fcf3ba81b137f8fc01ac5a31fb5")
+        let d = DataManager()
+        let s = u.GetLatestMovieURL()
+        d.GetData(url: s)
+        
     }
 
     override func didReceiveMemoryWarning() {

@@ -17,47 +17,39 @@ class UrlManager: NSObject
     
     // MARK: Get Movies URL
     
-    func GetLatestMovieURL() -> URL
+    func GetLatestMovieURL() -> String
     {
-       let urlString = "https://api.themoviedb.org/3/movie/latest?api_key=\(ApiKey)&language=en-US"
-       return URL(fileURLWithPath: urlString)
+       return  "https://api.themoviedb.org/3/movie/latest?api_key=\(ApiKey)&language=en-US"
     }
     
-    func GetNowPlayingMoviesURL(pageNumber:Int) -> URL {
-        let urlString = "https://api.themoviedb.org/3/movie/now_playing?api_key=\(ApiKey)&language=en-US&page=\(pageNumber)"
-        return URL(fileURLWithPath: urlString)
+    func GetNowPlayingMoviesURL(pageNumber:Int) -> String {
+        return "https://api.themoviedb.org/3/movie/now_playing?api_key=\(ApiKey)&language=en-US&page=\(pageNumber)"
     }
     
-    func GetPopularMoviesURL(pageNumber:Int) -> URL {
-        let urlString = "https://api.themoviedb.org/3/movie/popular?api_key=\(ApiKey)&language=en-US&page=\(pageNumber)"
-        return URL(fileURLWithPath: urlString)
+    func GetPopularMoviesURL(pageNumber:Int) -> String {
+        return "https://api.themoviedb.org/3/movie/popular?api_key=\(ApiKey)&language=en-US&page=\(pageNumber)"
     }
     
-    func GetTopRatedMoviesURL(pageNumber:Int) -> URL {
-        let urlString = "https://api.themoviedb.org/3/movie/top_rated?api_key=\(ApiKey)&language=en-US&page=\(pageNumber)"
-        return URL(fileURLWithPath: urlString)
+    func GetTopRatedMoviesURL(pageNumber:Int) -> String {
+        return "https://api.themoviedb.org/3/movie/top_rated?api_key=\(ApiKey)&language=en-US&page=\(pageNumber)"
     }
     
-    func GetUpcomingMoviesURL(pageNumber:Int) -> URL {
-        let urlString = "https://api.themoviedb.org/3/movie/upcoming?api_key=\(ApiKey)&language=en-US&page=\(pageNumber)"
-        return URL(fileURLWithPath: urlString)
+    func GetUpcomingMoviesURL(pageNumber:Int) -> String {
+        return  "https://api.themoviedb.org/3/movie/upcoming?api_key=\(ApiKey)&language=en-US&page=\(pageNumber)"
     }
     
     // MARK: Movies Details URL
     
-    func GetDetailsURL(movieId:String) -> URL {
-        let urlString = "https://api.themoviedb.org/3/movie/\(movieId)?api_key=\(ApiKey)&language=en-US"
-        return URL(fileURLWithPath: urlString)
+    func GetDetailsURL(movieId:String) -> String {
+        return "https://api.themoviedb.org/3/movie/\(movieId)?api_key=\(ApiKey)&language=en-US"
     }
-    func GetMoviePhotosURL(movieId:String) -> URL {
-        let urlString = "https://api.themoviedb.org/3/movie/\(movieId)/images?api_key=\(ApiKey)&language=en-US"
-        return URL(fileURLWithPath: urlString)
+    func GetMoviePhotosURL(movieId:String) -> String {
+        return "https://api.themoviedb.org/3/movie/\(movieId)/images?api_key=\(ApiKey)&language=en-US"
     }
     
     // MARK: Search URL
     
-    func SearchMoviesURL(query:String,pageNumber:Int) -> URL {
-        let urlString = "https://api.themoviedb.org/3/search/movie?api_key=\(ApiKey)&language=en-US&query=\(query)&page=\(pageNumber)&include_adult=false"
-        return URL(fileURLWithPath: urlString)
+    func SearchMoviesURL(query:String,pageNumber:Int) -> String {
+        return "https://api.themoviedb.org/3/search/movie?api_key=\(ApiKey)&language=en-US&query=\(query)&page=\(pageNumber)&include_adult=false"
     }
 }
