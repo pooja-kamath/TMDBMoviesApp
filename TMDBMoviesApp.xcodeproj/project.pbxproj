@@ -106,6 +106,14 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		94308A5C212944C6008B042B /* DataType */ = {
+			isa = PBXGroup;
+			children = (
+				94308A5721292C94008B042B /* EnumURLType.swift */,
+			);
+			path = DataType;
+			sourceTree = "<group>";
+		};
 		94FC93732128133700A31CD8 = {
 			isa = PBXGroup;
 			children = (
@@ -131,6 +139,7 @@
 		94FC937E2128133700A31CD8 /* TMDBMoviesApp */ = {
 			isa = PBXGroup;
 			children = (
+				94308A5C212944C6008B042B /* DataType */,
 				94308A592129366D008B042B /* Model */,
 				94FC93A22128169000A31CD8 /* Managers */,
 				94FC937F2128133700A31CD8 /* AppDelegate.swift */,
@@ -160,7 +169,6 @@
 				94FC93A5212816B900A31CD8 /* NetworkManager.swift */,
 				94FC93A7212816C700A31CD8 /* ParsingManager.swift */,
 				94FC93A9212816DE00A31CD8 /* UrlManager.swift */,
-				94308A5721292C94008B042B /* EnumURLType.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
