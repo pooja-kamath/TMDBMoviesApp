@@ -78,15 +78,18 @@ class HomeViewController: UIViewController,UICollectionViewDataSource,UICollecti
         let cellWidth = UIScreen.main.bounds.size.width / numberOfCell
         return CGSize(width:cellWidth, height:cellWidth)
     }
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.movieID =  NowPlayingList[indexPath.row].id
         self.PushDetailViewController()
     }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 3
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
+    {
         let customCell  =  (tableView.dequeueReusableCell(withIdentifier: "customCell"))as! CustomTableViewCell
 
         AddDelegates(customCell: customCell)
@@ -109,7 +112,9 @@ class HomeViewController: UIViewController,UICollectionViewDataSource,UICollecti
         }
         return customCell
     }
-    func GetMovieId(path:IndexPath,index:Int) -> String {
+    
+    func GetMovieId(path:IndexPath,index:Int) -> String
+    {
         if(path.row == 0)
         {
             return PopularList[index].id
@@ -126,6 +131,11 @@ class HomeViewController: UIViewController,UICollectionViewDataSource,UICollecti
     
     func AddDelegates(customCell :CustomTableViewCell)
     {
+        customCell.tappedMoreButton = {
+         [unowned self] (selectedCell) -> Void in
+            let path = self.downTV.indexPathForRow(at: selectedCell.center)!
+            //push to more list
+        }
         customCell.tappedOne = { [unowned self] (selectedCell) -> Void in
             let path = self.downTV.indexPathForRow(at: selectedCell.center)!
             self.movieID = self.GetMovieId(path: path, index: 0)

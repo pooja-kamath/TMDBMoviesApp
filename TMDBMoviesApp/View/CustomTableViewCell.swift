@@ -19,6 +19,7 @@ class CustomTableViewCell: UITableViewCell
     var tappedOne: ((CustomTableViewCell) -> Void)?
     var tappedTwo: ((CustomTableViewCell) -> Void)?
     var tappedThree: ((CustomTableViewCell) -> Void)?
+    var tappedMoreButton: ((CustomTableViewCell) -> Void)?
 
     func Configure(movies:[Movie],cellTag:Int,cellText:String)
     {
@@ -40,6 +41,7 @@ class CustomTableViewCell: UITableViewCell
             self.ImageThree.tag = 2
 
         }
+        
         let tapRecognizer1 = UITapGestureRecognizer(target: self, action: #selector(onTapScreenOne))
         imageOne.isUserInteractionEnabled = true
         imageOne.addGestureRecognizer(tapRecognizer1)
@@ -64,6 +66,10 @@ class CustomTableViewCell: UITableViewCell
     @objc func onTapScreenThree()
     {
         tappedThree?(self)
+    }
+    @IBAction func MoreButtonAction(_ sender: Any)
+    {
+        tappedMoreButton?(self)
     }
 }
 

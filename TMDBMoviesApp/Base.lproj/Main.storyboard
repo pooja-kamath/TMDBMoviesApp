@@ -291,7 +291,7 @@
                                                     <rect key="frame" x="309" y="2" width="36" height="30"/>
                                                     <state key="normal" title="More"/>
                                                     <connections>
-                                                        <segue destination="PKR-1i-na5" kind="showDetail" id="Q5f-uL-32Q"/>
+                                                        <action selector="MoreButtonAction:" destination="w2w-D8-5Sp" eventType="touchUpInside" id="TmB-SK-Pfc"/>
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalCompressionResistancePriority="741" text="Now Playing" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wrg-Ks-GlS">
