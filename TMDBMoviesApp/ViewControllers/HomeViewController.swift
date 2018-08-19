@@ -78,7 +78,10 @@ class HomeViewController: UIViewController,UICollectionViewDataSource,UICollecti
         let cellWidth = UIScreen.main.bounds.size.width / numberOfCell
         return CGSize(width:cellWidth, height:cellWidth)
     }
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.movieID =  NowPlayingList[indexPath.row].id
+        self.PushDetailViewController()
+    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 3
     }
@@ -120,26 +123,33 @@ class HomeViewController: UIViewController,UICollectionViewDataSource,UICollecti
            return UpComingList[index].id
         }
     }
+    
     func AddDelegates(customCell :CustomTableViewCell)
     {
         customCell.tappedOne = { [unowned self] (selectedCell) -> Void in
             let path = self.downTV.indexPathForRow(at: selectedCell.center)!
             self.movieID = self.GetMovieId(path: path, index: 0)
-            let vc = self.storyboard?.instantiateViewController(withIdentifier: "DetailVC") as! DetailViewController
-            vc.id = self.movieID
-            print(self.movieID)
-            self.present(vc, animated: true, completion: nil)
+            self.PushDetailViewController()
         }
         
         customCell.tappedTwo = { [unowned self] (selectedCell) -> Void in
             let path = self.downTV.indexPathForRow(at: selectedCell.center)!
             self.movieID = self.GetMovieId(path: path, index: 1)
+            self.PushDetailViewController()
         }
         
         customCell.tappedThree = { [unowned self] (selectedCell) -> Void in
             let path = self.downTV.indexPathForRow(at: selectedCell.center)!
             self.movieID = self.GetMovieId(path: path, index: 2)
+            self.PushDetailViewController()
         }
     }
-   
+    
+    func PushDetailViewController()
+    {
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "DetailVC") as! DetailViewController
+        vc.id = self.movieID
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+        
 }
