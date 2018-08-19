@@ -8,19 +8,19 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class DetailViewController: UIViewController {
 
+    public var id :String = ""
+   
     override func viewDidLoad()
     {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
         let dataManager = DataManager()
-        dataManager.GetData(urlType: EnumURLType.NowPlaying, completionHandler: { (data) in
-           for movie in data {
-            print(movie.id,movie.title,movie.photoURl)
-            }
-        })
+        dataManager.GetDetail(urlType: EnumURLType.Details, pageNumber: 1, movieId: id) { (Movie) in
+            print(Movie.title)
+        }
     }
 
     override func didReceiveMemoryWarning() {

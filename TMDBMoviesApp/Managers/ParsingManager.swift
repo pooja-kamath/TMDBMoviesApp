@@ -12,9 +12,12 @@ import Alamofire
 
 class ParsingManager: NSObject
 {
-    func ParseJson(json:JSON) ->[Movie]{
+    
+    
+    func ParseData(data:NSDictionary)->[Movie] {
+        let jsonData = JSON(data)
         var moviesResult :[Movie] = [Movie]()
-        if let movies = json["results"].array {
+        if let movies = jsonData["results"].array {
             for movie in movies {
                 let movieObj = Movie(json: movie)
                 moviesResult.append(movieObj)
@@ -22,9 +25,9 @@ class ParsingManager: NSObject
         }
         return moviesResult
     }
-    
-    func ParseData(data:NSDictionary)->[Movie] {
+    func ParseDetail(data:NSDictionary)->Movie {
         let jsonData = JSON(data)
-        return ParseJson(json: jsonData)
+        let moviesResult :Movie =  Movie(json: jsonData)
+        return moviesResult
     }
 }

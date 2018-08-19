@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 
+
 class HomeViewController: UIViewController,UICollectionViewDataSource,UICollectionViewDelegate,UITableViewDelegate,UITableViewDataSource
 {
     
@@ -19,15 +20,19 @@ class HomeViewController: UIViewController,UICollectionViewDataSource,UICollecti
     var PopularList :[Movie] = [Movie]()
     var TopRatedList :[Movie] = [Movie]()
     var UpComingList :[Movie] = [Movie]()
-    
+    var movieID = ""
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        
+        TopCollectionView.flashScrollIndicators()
+        TopCollectionView?.showsVerticalScrollIndicator = true
+
         let dataManager = DataManager()
         dataManager.GetData(urlType: EnumURLType.NowPlaying, completionHandler: { (data) in
             self.NowPlayingList = data
             self.TopCollectionView.reloadData()
+            let index :IndexPath = IndexPath(row:self.NowPlayingList.count/2, section: 0)
+            self.TopCollectionView.scrollToItem(at: index, at: UICollectionViewScrollPosition.centeredHorizontally, animated: false)
         })
         dataManager.GetData(urlType: EnumURLType.Popular, completionHandler: { (data) in
             self.PopularList = data
@@ -51,7 +56,7 @@ class HomeViewController: UIViewController,UICollectionViewDataSource,UICollecti
             self.downTV.endUpdates()
         })
         let layout = TopCollectionView?.collectionViewLayout as! UICollectionViewFlowLayout
-        layout.itemSize = CGSize.init(width: (UIScreen.main.bounds.width), height: TopCollectionView.frame.height)
+        layout.itemSize = CGSize.init(width: ((UIScreen.main.bounds.width)-(UIScreen.main.bounds.width/4)), height: TopCollectionView.frame.height)
         
     }
     
@@ -80,23 +85,61 @@ class HomeViewController: UIViewController,UICollectionViewDataSource,UICollecti
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let customCell  =  (tableView.dequeueReusableCell(withIdentifier: "customCell"))as! CustomTableViewCell
+
+        AddDelegates(customCell: customCell)
         
         if(indexPath.row == 0)
         {
-            customCell.Configure(movies: PopularList)
+            customCell.Configure(movies: PopularList, cellTag: 0, cellText: "Popular")
         }
         else if(indexPath.row == 1)
         {
-            customCell.Configure(movies: TopRatedList)
+            customCell.Configure(movies: TopRatedList, cellTag: 0, cellText: "Top Rated")
         }
         else if(indexPath.row == 2)
         {
-            customCell.Configure(movies: UpComingList)
+            customCell.Configure(movies: UpComingList, cellTag: 0, cellText: "Up-Coming")
         }
         else
         {
-            customCell.Configure(movies: PopularList)
+            customCell.Configure(movies: PopularList, cellTag: 0, cellText: "Popular")
         }
         return customCell
     }
+    func GetMovieId(path:IndexPath,index:Int) -> String {
+        if(path.row == 0)
+        {
+            return PopularList[index].id
+        }
+        else if(path.row == 1)
+        {
+            return TopRatedList[index].id
+        }
+        else
+        {
+           return UpComingList[index].id
+        }
+    }
+    func AddDelegates(customCell :CustomTableViewCell)
+    {
+        customCell.tappedOne = { [unowned self] (selectedCell) -> Void in
+            let path = self.downTV.indexPathForRow(at: selectedCell.center)!
+            self.movieID = self.GetMovieId(path: path, index: 0)
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: "DetailVC") as! DetailViewController
+            vc.id = self.movieID
+            print(self.movieID)
+            self.present(vc, animated: true, completion: nil)
+        }
+        
+        customCell.tappedTwo = { [unowned self] (selectedCell) -> Void in
+            let path = self.downTV.indexPathForRow(at: selectedCell.center)!
+            self.movieID = self.GetMovieId(path: path, index: 1)
+        }
+        
+        customCell.tappedThree = { [unowned self] (selectedCell) -> Void in
+            let path = self.downTV.indexPathForRow(at: selectedCell.center)!
+            self.movieID = self.GetMovieId(path: path, index: 2)
+        }
+    }
+   
 }

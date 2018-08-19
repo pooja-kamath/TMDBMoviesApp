@@ -35,6 +35,27 @@ class DataManager: NSObject
         }
         
     }
-    
+    func GetDetail(urlType : EnumURLType,pageNumber :Int,movieId:String,completionHandler:@escaping (Movie) -> ()) -> Void
+    {
+        let urlManager = UrlManager(apiKey: ApiKey)
+        let url = urlManager.GetURL(urlType: urlType,pageNumber: pageNumber,movieId: movieId)
+        
+        let networkmanager = NetworkManager()
+        networkmanager.FetchData(url: url)
+        {
+            (responseData) in
+            if((responseData) != nil)
+            {
+                let parser = ParsingManager()
+                let data = parser.ParseDetail(data: responseData!)
+                completionHandler(data)
+            }
+            else
+            {
+                //Show error
+            }
+        }
+        
+    }
     
 }

@@ -12,7 +12,6 @@
 		94308A5F2129558E008B042B /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94308A5E2129558E008B042B /* HomeViewController.swift */; };
 		94308A622129630E008B042B /* TopCustomCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94308A612129630E008B042B /* TopCustomCollectionCell.swift */; };
 		94308A6421297F02008B042B /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94308A6321297F02008B042B /* CustomTableViewCell.swift */; };
-		94308A66212980B4008B042B /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94308A65212980B4008B042B /* CustomCell.swift */; };
 		943B63C621282529009B04EF /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 943B63C321282529009B04EF /* Alamofire.framework */; };
 		943B63C721282529009B04EF /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 943B63C321282529009B04EF /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		943B63C821282529009B04EF /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 943B63C421282529009B04EF /* SwiftyJSON.framework */; };
@@ -20,7 +19,7 @@
 		943B63CA21282529009B04EF /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 943B63C521282529009B04EF /* Kingfisher.framework */; };
 		943B63CB21282529009B04EF /* Kingfisher.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 943B63C521282529009B04EF /* Kingfisher.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		94FC93802128133700A31CD8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94FC937F2128133700A31CD8 /* AppDelegate.swift */; };
-		94FC93822128133700A31CD8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94FC93812128133700A31CD8 /* ViewController.swift */; };
+		94FC93822128133700A31CD8 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94FC93812128133700A31CD8 /* DetailViewController.swift */; };
 		94FC93852128133700A31CD8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94FC93832128133700A31CD8 /* Main.storyboard */; };
 		94FC93882128133700A31CD8 /* TMDBMoviesApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 94FC93862128133700A31CD8 /* TMDBMoviesApp.xcdatamodeld */; };
 		94FC938A2128133700A31CD8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 94FC93892128133700A31CD8 /* Assets.xcassets */; };
@@ -64,13 +63,12 @@
 		94308A5E2129558E008B042B /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		94308A612129630E008B042B /* TopCustomCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopCustomCollectionCell.swift; sourceTree = "<group>"; };
 		94308A6321297F02008B042B /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
-		94308A65212980B4008B042B /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 		943B63C321282529009B04EF /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		943B63C421282529009B04EF /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
 		943B63C521282529009B04EF /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Carthage/Build/iOS/Kingfisher.framework; sourceTree = "<group>"; };
 		94FC937C2128133700A31CD8 /* TMDBMoviesApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TMDBMoviesApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		94FC937F2128133700A31CD8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		94FC93812128133700A31CD8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		94FC93812128133700A31CD8 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		94FC93842128133700A31CD8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		94FC93872128133700A31CD8 /* TMDBMoviesApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TMDBMoviesApp.xcdatamodel; sourceTree = "<group>"; };
 		94FC93892128133700A31CD8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -135,7 +133,6 @@
 			children = (
 				94308A612129630E008B042B /* TopCustomCollectionCell.swift */,
 				94308A6321297F02008B042B /* CustomTableViewCell.swift */,
-				94308A65212980B4008B042B /* CustomCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -171,7 +168,7 @@
 				94308A592129366D008B042B /* Model */,
 				94FC93A22128169000A31CD8 /* Managers */,
 				94FC937F2128133700A31CD8 /* AppDelegate.swift */,
-				94FC93812128133700A31CD8 /* ViewController.swift */,
+				94FC93812128133700A31CD8 /* DetailViewController.swift */,
 				94FC93832128133700A31CD8 /* Main.storyboard */,
 				94FC93892128133700A31CD8 /* Assets.xcassets */,
 				94FC938B2128133700A31CD8 /* LaunchScreen.storyboard */,
@@ -313,8 +310,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				94FC93A8212816C700A31CD8 /* ParsingManager.swift in Sources */,
-				94308A66212980B4008B042B /* CustomCell.swift in Sources */,
-				94FC93822128133700A31CD8 /* ViewController.swift in Sources */,
+				94FC93822128133700A31CD8 /* DetailViewController.swift in Sources */,
 				94308A5B2129367B008B042B /* Movie.swift in Sources */,
 				94FC93A4212816A800A31CD8 /* DataManager.swift in Sources */,
 				94FC93AA212816DE00A31CD8 /* UrlManager.swift in Sources */,
