@@ -13,11 +13,12 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        let u  = UrlManager(apiKey: "55957fcf3ba81b137f8fc01ac5a31fb5")
-        let d = DataManager()
-        let s = u.GetLatestMovieURL()
-        d.GetData(url: s)
-        
+        let dataManager = DataManager()
+        dataManager.GetData(urlType: EnumURLType.NowPlaying, completionHandler: { (data) in
+           for movie in data {
+            print(movie.id,movie.title,movie.photoURl)
+            }
+        })
     }
 
     override func didReceiveMemoryWarning() {
