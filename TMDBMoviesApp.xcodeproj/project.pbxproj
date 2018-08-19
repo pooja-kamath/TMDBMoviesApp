@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		94308A5821292C94008B042B /* EnumURLType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94308A5721292C94008B042B /* EnumURLType.swift */; };
 		94308A5B2129367B008B042B /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94308A5A2129367B008B042B /* Movie.swift */; };
+		94308A5F2129558E008B042B /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94308A5E2129558E008B042B /* HomeViewController.swift */; };
+		94308A622129630E008B042B /* TopCustomCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94308A612129630E008B042B /* TopCustomCollectionCell.swift */; };
+		94308A6421297F02008B042B /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94308A6321297F02008B042B /* CustomTableViewCell.swift */; };
+		94308A66212980B4008B042B /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94308A65212980B4008B042B /* CustomCell.swift */; };
 		943B63C621282529009B04EF /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 943B63C321282529009B04EF /* Alamofire.framework */; };
 		943B63C721282529009B04EF /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 943B63C321282529009B04EF /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		943B63C821282529009B04EF /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 943B63C421282529009B04EF /* SwiftyJSON.framework */; };
@@ -57,6 +61,10 @@
 /* Begin PBXFileReference section */
 		94308A5721292C94008B042B /* EnumURLType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumURLType.swift; sourceTree = "<group>"; };
 		94308A5A2129367B008B042B /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
+		94308A5E2129558E008B042B /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		94308A612129630E008B042B /* TopCustomCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopCustomCollectionCell.swift; sourceTree = "<group>"; };
+		94308A6321297F02008B042B /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
+		94308A65212980B4008B042B /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 		943B63C321282529009B04EF /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		943B63C421282529009B04EF /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
 		943B63C521282529009B04EF /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Carthage/Build/iOS/Kingfisher.framework; sourceTree = "<group>"; };
@@ -114,6 +122,24 @@
 			path = DataType;
 			sourceTree = "<group>";
 		};
+		94308A5D21295572008B042B /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				94308A5E2129558E008B042B /* HomeViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		94308A60212962F8008B042B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				94308A612129630E008B042B /* TopCustomCollectionCell.swift */,
+				94308A6321297F02008B042B /* CustomTableViewCell.swift */,
+				94308A65212980B4008B042B /* CustomCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		94FC93732128133700A31CD8 = {
 			isa = PBXGroup;
 			children = (
@@ -139,6 +165,8 @@
 		94FC937E2128133700A31CD8 /* TMDBMoviesApp */ = {
 			isa = PBXGroup;
 			children = (
+				94308A60212962F8008B042B /* View */,
+				94308A5D21295572008B042B /* ViewControllers */,
 				94308A5C212944C6008B042B /* DataType */,
 				94308A592129366D008B042B /* Model */,
 				94FC93A22128169000A31CD8 /* Managers */,
@@ -285,10 +313,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				94FC93A8212816C700A31CD8 /* ParsingManager.swift in Sources */,
+				94308A66212980B4008B042B /* CustomCell.swift in Sources */,
 				94FC93822128133700A31CD8 /* ViewController.swift in Sources */,
 				94308A5B2129367B008B042B /* Movie.swift in Sources */,
 				94FC93A4212816A800A31CD8 /* DataManager.swift in Sources */,
 				94FC93AA212816DE00A31CD8 /* UrlManager.swift in Sources */,
+				94308A5F2129558E008B042B /* HomeViewController.swift in Sources */,
+				94308A6421297F02008B042B /* CustomTableViewCell.swift in Sources */,
+				94308A622129630E008B042B /* TopCustomCollectionCell.swift in Sources */,
 				94FC93A6212816B900A31CD8 /* NetworkManager.swift in Sources */,
 				94FC93882128133700A31CD8 /* TMDBMoviesApp.xcdatamodeld in Sources */,
 				94308A5821292C94008B042B /* EnumURLType.swift in Sources */,
