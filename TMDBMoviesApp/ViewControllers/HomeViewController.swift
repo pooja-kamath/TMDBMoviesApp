@@ -31,8 +31,6 @@ class HomeViewController: UIViewController,UICollectionViewDataSource,UICollecti
         dataManager.GetData(urlType: EnumURLType.NowPlaying, completionHandler: { (data) in
             self.NowPlayingList = data
             self.TopCollectionView.reloadData()
-            let index :IndexPath = IndexPath(row:self.NowPlayingList.count/2, section: 0)
-            self.TopCollectionView.scrollToItem(at: index, at: UICollectionViewScrollPosition.centeredHorizontally, animated: false)
         })
         dataManager.GetData(urlType: EnumURLType.Popular, completionHandler: { (data) in
             self.PopularList = data
@@ -56,8 +54,9 @@ class HomeViewController: UIViewController,UICollectionViewDataSource,UICollecti
             self.downTV.endUpdates()
         })
         let layout = TopCollectionView?.collectionViewLayout as! UICollectionViewFlowLayout
-        layout.itemSize = CGSize.init(width: ((UIScreen.main.bounds.width)-(UIScreen.main.bounds.width/4)), height: TopCollectionView.frame.height)
+        layout.itemSize = CGSize.init(width: (UIScreen.main.bounds.width), height: TopCollectionView.frame.height)
         
+       
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
@@ -72,12 +71,6 @@ class HomeViewController: UIViewController,UICollectionViewDataSource,UICollecti
         return customcell
     }
     
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize
-    {
-        let numberOfCell: CGFloat = 3   //you need to give a type as CGFloat
-        let cellWidth = UIScreen.main.bounds.size.width / numberOfCell
-        return CGSize(width:cellWidth, height:cellWidth)
-    }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.movieID =  NowPlayingList[indexPath.row].id
@@ -135,6 +128,19 @@ class HomeViewController: UIViewController,UICollectionViewDataSource,UICollecti
          [unowned self] (selectedCell) -> Void in
             let path = self.downTV.indexPathForRow(at: selectedCell.center)!
             //push to more list
+            if(path.row == 0)
+            {
+              self.PushMoreViewController(urlType: EnumURLType.Popular)
+            }
+            else if(path.row == 1)
+            {
+                self.PushMoreViewController(urlType: EnumURLType.TopRated)
+            }
+            else
+            {
+                self.PushMoreViewController(urlType: EnumURLType.UpComing)
+            }
+
         }
         customCell.tappedOne = { [unowned self] (selectedCell) -> Void in
             let path = self.downTV.indexPathForRow(at: selectedCell.center)!
@@ -159,6 +165,12 @@ class HomeViewController: UIViewController,UICollectionViewDataSource,UICollecti
     {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "DetailVC") as! DetailViewController
         vc.id = self.movieID
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    func PushMoreViewController(urlType :EnumURLType)
+    {
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "MoreVC") as! MoreViewController
+        vc.enumGetType = urlType
         self.navigationController?.pushViewController(vc, animated: true)
     }
         

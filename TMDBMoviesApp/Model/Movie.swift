@@ -14,6 +14,7 @@ class Movie: NSObject {
     var title:String
     var overView: String
     var photoURl:String
+    var backdropURl:String
     var releaseDate:String
     var budget:Int
     var rating:Float
@@ -28,6 +29,7 @@ class Movie: NSObject {
         self.budget = 0
         self.rating = 0
         self.tagLine = ""
+        self.backdropURl = ""
     }
     
     init(json : JSON){
@@ -35,6 +37,7 @@ class Movie: NSObject {
         self.title = json["title"].stringValue
         self.overView = json["overview"].stringValue
         self.photoURl = json["poster_path"].stringValue
+        self.backdropURl = json["backdrop_path"].stringValue
         self.releaseDate = json["release_date"].stringValue
         self.budget = json["budget"].intValue
         self.rating = json["vote_average"].floatValue

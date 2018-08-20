@@ -17,7 +17,7 @@ class TopCustomCollectionCell: UICollectionViewCell
     
     func Configure(movie:Movie)
     {
-        let url = URL(string:"http://image.tmdb.org/t/p/w200/" + movie.photoURl)
+        let url = URL(string:"http://image.tmdb.org/t/p/w400/" + movie.backdropURl)
         self.posterImage.kf.setImage(with: url)
         self.posterLabel.text = movie.title
     }
