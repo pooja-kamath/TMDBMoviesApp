@@ -31,32 +31,35 @@ class HomeViewController: UIViewController,UICollectionViewDataSource,UICollecti
         dataManager.GetData(urlType: EnumURLType.NowPlaying, completionHandler: { (data) in
             self.NowPlayingList = data
             self.TopCollectionView.reloadData()
+            self.downTV.beginUpdates()
+            let index :IndexPath = IndexPath(row: 0, section: 0)
+            self.downTV.reloadRows(at: [index], with: UITableViewRowAnimation.fade)
+            self.downTV.endUpdates()
         })
         dataManager.GetData(urlType: EnumURLType.Popular, completionHandler: { (data) in
             self.PopularList = data
             self.downTV.beginUpdates()
-            let index :IndexPath = IndexPath(row: 0, section: 0)
+            let index :IndexPath = IndexPath(row: 1, section: 0)
             self.downTV.reloadRows(at: [index], with: UITableViewRowAnimation.fade)
             self.downTV.endUpdates()
         })
         dataManager.GetData(urlType: EnumURLType.TopRated, completionHandler: { (data) in
             self.TopRatedList = data
             self.downTV.beginUpdates()
-            let index :IndexPath = IndexPath(row: 1, section: 0)
+            let index :IndexPath = IndexPath(row: 2, section: 0)
             self.downTV.reloadRows(at: [index], with: UITableViewRowAnimation.fade)
             self.downTV.endUpdates()
         })
         dataManager.GetData(urlType: EnumURLType.UpComing, completionHandler: { (data) in
             self.UpComingList = data
             self.downTV.beginUpdates()
-            let index :IndexPath = IndexPath(row: 2, section: 0)
+            let index :IndexPath = IndexPath(row: 3	, section: 0)
             self.downTV.reloadRows(at: [index], with: UITableViewRowAnimation.fade)
             self.downTV.endUpdates()
         })
         let layout = TopCollectionView?.collectionViewLayout as! UICollectionViewFlowLayout
         layout.itemSize = CGSize.init(width: (UIScreen.main.bounds.width), height: TopCollectionView.frame.height)
         
-       
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
@@ -78,7 +81,7 @@ class HomeViewController: UIViewController,UICollectionViewDataSource,UICollecti
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return 4
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
@@ -89,13 +92,17 @@ class HomeViewController: UIViewController,UICollectionViewDataSource,UICollecti
         
         if(indexPath.row == 0)
         {
-            customCell.Configure(movies: PopularList, cellTag: 0, cellText: "Popular")
+            customCell.Configure(movies: NowPlayingList, cellTag: 0, cellText: "Now Playing")
         }
         else if(indexPath.row == 1)
         {
-            customCell.Configure(movies: TopRatedList, cellTag: 0, cellText: "Top Rated")
+            customCell.Configure(movies: PopularList, cellTag: 0, cellText: "Popular")
         }
         else if(indexPath.row == 2)
+        {
+            customCell.Configure(movies: TopRatedList, cellTag: 0, cellText: "Top Rated")
+        }
+        else if(indexPath.row == 3)
         {
             customCell.Configure(movies: UpComingList, cellTag: 0, cellText: "Up-Coming")
         }
@@ -110,9 +117,13 @@ class HomeViewController: UIViewController,UICollectionViewDataSource,UICollecti
     {
         if(path.row == 0)
         {
-            return PopularList[index].id
+            return NowPlayingList[index].id
         }
         else if(path.row == 1)
+        {
+            return PopularList[index].id
+        }
+        else if(path.row == 2)
         {
             return TopRatedList[index].id
         }
@@ -130,6 +141,10 @@ class HomeViewController: UIViewController,UICollectionViewDataSource,UICollecti
             //push to more list
             if(path.row == 0)
             {
+                self.PushMoreViewController(urlType: EnumURLType.NowPlaying)
+            }
+            else if(path.row == 1)
+            {
               self.PushMoreViewController(urlType: EnumURLType.Popular)
             }
             else if(path.row == 1)
@@ -142,6 +157,7 @@ class HomeViewController: UIViewController,UICollectionViewDataSource,UICollecti
             }
 
         }
+        
         customCell.tappedOne = { [unowned self] (selectedCell) -> Void in
             let path = self.downTV.indexPathForRow(at: selectedCell.center)!
             self.movieID = self.GetMovieId(path: path, index: 0)
