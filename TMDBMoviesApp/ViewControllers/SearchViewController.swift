@@ -12,12 +12,17 @@ import UIKit
 class SearchViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,UISearchBarDelegate
 {
     @IBOutlet weak var searchTable: UITableView!
+    @IBOutlet weak var loadingSearchView: UIView!
     @IBOutlet weak var movieSearchBar: UISearchBar!
+    
     var searchResults:[Movie] = [Movie]()
-    override func viewDidLoad() {
+    
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
         movieSearchBar.delegate = self
     }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return searchResults.count
     }
@@ -39,6 +44,7 @@ class SearchViewController: UIViewController,UITableViewDelegate,UITableViewData
         let dataManager = DataManager()
         dataManager.GetData(urlType: EnumURLType.Search, completionHandler: { (data) in
             self.searchResults = data
+            self.loadingSearchView.isHidden = true
             self.searchTable.reloadData()
             
         },pageNumber: 1,movieId:"",query: searchBar.text!)

@@ -21,16 +21,39 @@ class HomeViewController: UIViewController,UICollectionViewDataSource,UICollecti
     var TopRatedList :[Movie] = [Movie]()
     var UpComingList :[Movie] = [Movie]()
     var movieID = ""
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
+       
+        InitializeView()
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool)
+    {
+       CheckConnectivity()
+       LoadData()
+    }
+    
+    func InitializeView()
+    {
         TopCollectionView.flashScrollIndicators()
         TopCollectionView?.showsVerticalScrollIndicator = true
-
+        let layout = TopCollectionView?.collectionViewLayout as! UICollectionViewFlowLayout
+        layout.itemSize = CGSize.init(width: (UIScreen.main.bounds.width-60), height: TopCollectionView.frame.height)
+    }
+    
+    func LoadData()
+    {
         let dataManager = DataManager()
         dataManager.GetData(urlType: EnumURLType.NowPlaying, completionHandler: { (data) in
             self.NowPlayingList = data
             self.TopCollectionView.reloadData()
+            
+            let midIndex :IndexPath = IndexPath(row: (self.NowPlayingList.count/2), section: 0)
+            self.TopCollectionView.scrollToItem(at:midIndex, at: UICollectionViewScrollPosition.centeredHorizontally, animated: true)
+            
             self.downTV.beginUpdates()
             let index :IndexPath = IndexPath(row: 0, section: 0)
             self.downTV.reloadRows(at: [index], with: UITableViewRowAnimation.fade)
@@ -53,15 +76,33 @@ class HomeViewController: UIViewController,UICollectionViewDataSource,UICollecti
         dataManager.GetData(urlType: EnumURLType.UpComing, completionHandler: { (data) in
             self.UpComingList = data
             self.downTV.beginUpdates()
-            let index :IndexPath = IndexPath(row: 3	, section: 0)
+            let index :IndexPath = IndexPath(row: 3    , section: 0)
             self.downTV.reloadRows(at: [index], with: UITableViewRowAnimation.fade)
             self.downTV.endUpdates()
         })
-        let layout = TopCollectionView?.collectionViewLayout as! UICollectionViewFlowLayout
-        layout.itemSize = CGSize.init(width: (UIScreen.main.bounds.width), height: TopCollectionView.frame.height)
-        
     }
-    
+    func CheckConnectivity()
+    {
+        let alertController = UIAlertController(title: "Alert", message: "Please check your internet connectivity...", preferredStyle: .alert)
+        if Reachability.isConnectedToNetwork() == false
+        {
+           let action1 = UIAlertAction(title: "Done", style: .default) { (action:UIAlertAction) in
+                self.CheckConnectivity()
+            }
+            alertController.addAction(action1)
+            
+            self.present(alertController, animated: true, completion: nil)
+        }
+       else
+        {
+            if(alertController.isBeingPresented)
+            {
+                alertController.dismiss(animated: true, completion: {
+                    self.LoadData()
+                })
+            }
+        }
+    }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
     {
        return NowPlayingList.count
