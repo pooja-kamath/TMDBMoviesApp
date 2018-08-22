@@ -189,5 +189,9 @@ class HomeViewController: UIViewController,UICollectionViewDataSource,UICollecti
         vc.enumGetType = urlType
         self.navigationController?.pushViewController(vc, animated: true)
     }
-        
+    @IBAction func SearchAction(_ sender: Any) {
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "SearchVC") as! SearchViewController
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
 }

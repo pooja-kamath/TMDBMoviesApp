@@ -23,6 +23,8 @@
 		943B63CB21282529009B04EF /* Kingfisher.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 943B63C521282529009B04EF /* Kingfisher.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9458B6CD212D683500C8B492 /* YouTubePlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9458B6CC212D683500C8B492 /* YouTubePlayerViewController.swift */; };
 		9458B6CF212D6B4500C8B492 /* Trailer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9458B6CE212D6B4500C8B492 /* Trailer.swift */; };
+		9458B6D1212D7D5E00C8B492 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9458B6D0212D7D5E00C8B492 /* SearchTableViewCell.swift */; };
+		9458B6D3212D7DFD00C8B492 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9458B6D2212D7DFD00C8B492 /* SearchViewController.swift */; };
 		94FC93802128133700A31CD8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94FC937F2128133700A31CD8 /* AppDelegate.swift */; };
 		94FC93822128133700A31CD8 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94FC93812128133700A31CD8 /* DetailViewController.swift */; };
 		94FC93852128133700A31CD8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94FC93832128133700A31CD8 /* Main.storyboard */; };
@@ -76,6 +78,8 @@
 		943B63C521282529009B04EF /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Carthage/Build/iOS/Kingfisher.framework; sourceTree = "<group>"; };
 		9458B6CC212D683500C8B492 /* YouTubePlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouTubePlayerViewController.swift; sourceTree = "<group>"; };
 		9458B6CE212D6B4500C8B492 /* Trailer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trailer.swift; sourceTree = "<group>"; };
+		9458B6D0212D7D5E00C8B492 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
+		9458B6D2212D7DFD00C8B492 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		94FC937C2128133700A31CD8 /* TMDBMoviesApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TMDBMoviesApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		94FC937F2128133700A31CD8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		94FC93812128133700A31CD8 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
@@ -139,6 +143,7 @@
 				94FC93812128133700A31CD8 /* DetailViewController.swift */,
 				942EC6E8212A5CF00022FBFA /* MoreViewController.swift */,
 				9458B6CC212D683500C8B492 /* YouTubePlayerViewController.swift */,
+				9458B6D2212D7DFD00C8B492 /* SearchViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -149,6 +154,7 @@
 				94308A612129630E008B042B /* TopCustomCollectionCell.swift */,
 				94308A6321297F02008B042B /* CustomTableViewCell.swift */,
 				942EC6EA212A5F6F0022FBFA /* MoreCollectionCell.swift */,
+				9458B6D0212D7D5E00C8B492 /* SearchTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -328,11 +334,13 @@
 				94FC93A8212816C700A31CD8 /* ParsingManager.swift in Sources */,
 				942EC6E9212A5CF00022FBFA /* MoreViewController.swift in Sources */,
 				94FC93822128133700A31CD8 /* DetailViewController.swift in Sources */,
+				9458B6D3212D7DFD00C8B492 /* SearchViewController.swift in Sources */,
 				94308A5B2129367B008B042B /* Movie.swift in Sources */,
 				94FC93A4212816A800A31CD8 /* DataManager.swift in Sources */,
 				94FC93AA212816DE00A31CD8 /* UrlManager.swift in Sources */,
 				94308A5F2129558E008B042B /* HomeViewController.swift in Sources */,
 				94308A6421297F02008B042B /* CustomTableViewCell.swift in Sources */,
+				9458B6D1212D7D5E00C8B492 /* SearchTableViewCell.swift in Sources */,
 				942EC6EB212A5F6F0022FBFA /* MoreCollectionCell.swift in Sources */,
 				94308A622129630E008B042B /* TopCustomCollectionCell.swift in Sources */,
 				9458B6CD212D683500C8B492 /* YouTubePlayerViewController.swift in Sources */,
