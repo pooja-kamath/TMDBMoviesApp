@@ -7,6 +7,8 @@
 //
 
 import Foundation
+
+///Types of URLs
 enum EnumURLType
 {
     case

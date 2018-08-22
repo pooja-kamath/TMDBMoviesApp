@@ -8,14 +8,13 @@
 
 import Foundation
 import SwiftyJSON
-class Trailer: NSObject {
-    
+class Trailer: NSObject
+{
+    //Trailer key
     var key:String
-    
     
     override init() {
         self.key = ""
-        
     }
     
     init(json : JSON){

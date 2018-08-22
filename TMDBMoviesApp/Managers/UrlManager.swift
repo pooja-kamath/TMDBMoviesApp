@@ -9,9 +9,10 @@
 import Foundation
 class UrlManager: NSObject
 {
-    
+    ///Api key
     let ApiKey : String
     
+    //Initialize api key
     init(apiKey :String)
     {
         ApiKey = apiKey
@@ -58,6 +59,7 @@ class UrlManager: NSObject
         return "https://api.themoviedb.org/3/search/movie?api_key=\(ApiKey)&language=en-US&query=\(query)&page=\(pageNumber)&include_adult=false"
     }
     
+    ///Get the url for the details passed
     func GetURL(urlType : EnumURLType,pageNumber :Int = 1,movieId:String="",query:String="") -> String
     {
         switch urlType

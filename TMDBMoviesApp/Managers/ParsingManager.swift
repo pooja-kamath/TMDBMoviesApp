@@ -12,7 +12,7 @@ import Alamofire
 
 class ParsingManager: NSObject
 {
-    
+    //Parse Movie Data
     func ParseData(data:NSDictionary)->[Movie] {
         let jsonData = JSON(data)
         var moviesResult :[Movie] = [Movie]()
@@ -24,11 +24,15 @@ class ParsingManager: NSObject
         }
         return moviesResult
     }
+    
+    //Parse Movie detail
     func ParseDetail(data:NSDictionary)->Movie {
         let jsonData = JSON(data)
         let moviesResult :Movie =  Movie(json: jsonData)
         return moviesResult
     }
+    
+    //Parse Trailer Detail
     func ParseTrailer(data:NSDictionary)->[Trailer] {
         let jsonData = JSON(data)
         var trailerResult :[Trailer] = [Trailer]()
@@ -41,6 +45,7 @@ class ParsingManager: NSObject
         return trailerResult
     }
     
+    //Parse Image Detail
     func ParseImages(data:NSDictionary)->[BackDrop]
     {
         let jsonData = JSON(data)

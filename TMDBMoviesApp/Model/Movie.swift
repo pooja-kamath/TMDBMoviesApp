@@ -10,6 +10,8 @@ import Foundation
 import SwiftyJSON
 class Movie: NSObject {
  
+    //Movie details
+    
     var id:String
     var title:String
     var overView: String
@@ -20,7 +22,9 @@ class Movie: NSObject {
     var rating:Float
     var tagLine:String
     var video:Bool
-    override init() {
+    
+    override init()
+    {
         self.id = ""
         self.title = ""
         self.overView = ""
@@ -33,7 +37,8 @@ class Movie: NSObject {
         self.video = false
     }
     
-    init(json : JSON){
+    init(json : JSON)
+    {
         self.id = json["id"].stringValue
         self.title = json["title"].stringValue
         self.overView = json["overview"].stringValue

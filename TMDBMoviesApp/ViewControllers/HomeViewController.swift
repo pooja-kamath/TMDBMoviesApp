@@ -99,9 +99,13 @@ class HomeViewController: UIViewController,UICollectionViewDataSource,UICollecti
             self.downTV.endUpdates()
         })
     }
+    
+    ///Check if internet is connected
     func CheckConnectivity()
     {
         let alertController = UIAlertController(title: "Alert", message: "Please check your internet connectivity...", preferredStyle: .alert)
+        
+        //if internet not connected show alert
         if Reachability.isConnectedToNetwork() == false
         {
            let action1 = UIAlertAction(title: "Done", style: .default) { (action:UIAlertAction) in
@@ -113,6 +117,7 @@ class HomeViewController: UIViewController,UICollectionViewDataSource,UICollecti
         }
        else
         {
+            //Dismiss the alert if internet gets connected
             if(alertController.isBeingPresented)
             {
                 alertController.dismiss(animated: true, completion: {
@@ -121,11 +126,16 @@ class HomeViewController: UIViewController,UICollectionViewDataSource,UICollecti
             }
         }
     }
+    
+    ///MARK:Collection view delegate and data source methods
+    
+    ///Number of items in section of collection view
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
     {
        return NowPlayingList.count
     }
     
+    ///Get collection view cell
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
     {
         let customcell = (collectionView.dequeueReusableCell(withReuseIdentifier: "TopCell", for: indexPath)) as! TopCustomCollectionCell
@@ -133,16 +143,20 @@ class HomeViewController: UIViewController,UICollectionViewDataSource,UICollecti
         return customcell
     }
     
-    
+    ///Did select collection view cell
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.movieID =  NowPlayingList[indexPath.row].id
         self.PushDetailViewController()
     }
     
+    ///MARK:Table view delegate and data source methods
+
+    //Number of cells in table view
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 4
     }
     
+    //Get Table view cell
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         let customCell  =  (tableView.dequeueReusableCell(withIdentifier: "customCell"))as! CustomTableViewCell
@@ -172,6 +186,7 @@ class HomeViewController: UIViewController,UICollectionViewDataSource,UICollecti
         return customCell
     }
     
+    //Get movie id
     func GetMovieId(path:IndexPath,index:Int) -> String
     {
         if(path.row == 0)
@@ -192,6 +207,7 @@ class HomeViewController: UIViewController,UICollectionViewDataSource,UICollecti
         }
     }
     
+    //Add cell Delegates
     func AddDelegates(customCell :CustomTableViewCell)
     {
         customCell.tappedMoreButton = {
@@ -236,18 +252,23 @@ class HomeViewController: UIViewController,UICollectionViewDataSource,UICollecti
         }
     }
     
+    //Push to detail view controller
     func PushDetailViewController()
     {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "DetailVC") as! DetailViewController
         vc.id = self.movieID
         self.navigationController?.pushViewController(vc, animated: true)
     }
+    
+    //Push to more view controller
     func PushMoreViewController(urlType :EnumURLType)
     {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "MoreVC") as! MoreViewController
         vc.enumGetType = urlType
         self.navigationController?.pushViewController(vc, animated: true)
     }
+    
+    //Search Action
     @IBAction func SearchAction(_ sender: Any) {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "SearchVC") as! SearchViewController
         self.navigationController?.pushViewController(vc, animated: true)

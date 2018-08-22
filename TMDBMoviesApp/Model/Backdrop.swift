@@ -10,16 +10,16 @@ import Foundation
 import SwiftyJSON
 class BackDrop: NSObject {
     
+    //Backdrop image path
     var filePath:String
-  
     
     override init() {
         self.filePath = ""
-        
     }
     
-    init(json : JSON){
+    init(json : JSON)
+    {
         self.filePath = json["file_path"].stringValue
-            }
+    }
     
 }
