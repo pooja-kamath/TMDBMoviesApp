@@ -12,9 +12,11 @@ import Kingfisher
 
 class TopCustomCollectionCell: UICollectionViewCell
 {
+    ///Outlets
     @IBOutlet weak var posterImage: UIImageView!
     @IBOutlet weak var posterLabel: UILabel!
     
+    ///Configure the details from movie
     func Configure(movie:Movie)
     {
         let url = URL(string:"http://image.tmdb.org/t/p/w400/" + movie.backdropURl)
@@ -22,12 +24,15 @@ class TopCustomCollectionCell: UICollectionViewCell
         self.posterLabel.text = movie.title
     }
     
+    ///Configure Image view from url
     func ConfigureImage(path:String)
     {
         let url = URL(string:"http://image.tmdb.org/t/p/w400/" + path)
         self.posterImage.kf.setImage(with: url)
         self.posterLabel.isHidden = true
     }
+    
+    ///Configure Image view from movie
     func ConfigureImage(movie:Movie)
     {
         let url = URL(string:"http://image.tmdb.org/t/p/w400/" + movie.backdropURl)

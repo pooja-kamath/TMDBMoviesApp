@@ -11,10 +11,12 @@ import UIKit
 
 class SearchTableViewCell: UITableViewCell
 {
+    ///Outlets
     @IBOutlet weak var posterIV: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var overviewLabel: UILabel!
     
+    ///Configure cell details
     func Configure(movie:Movie)
     {
         let url = URL(string:"http://image.tmdb.org/t/p/w400/" + movie.photoURl)

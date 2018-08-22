@@ -12,30 +12,38 @@ import UIKit
 
 class HomeViewController: UIViewController,UICollectionViewDataSource,UICollectionViewDelegate,UITableViewDelegate,UITableViewDataSource
 {
-    
+    ///Outlets
     @IBOutlet weak var downTV: UITableView!
     @IBOutlet weak var TopCollectionView: UICollectionView!
     
+    ///Result arrays
     var NowPlayingList :[Movie] = [Movie]()
     var PopularList :[Movie] = [Movie]()
     var TopRatedList :[Movie] = [Movie]()
     var UpComingList :[Movie] = [Movie]()
+    
+    ///Movie id
     var movieID = ""
     
+    ///View did load
+    ///Initialize the view
     override func viewDidLoad()
     {
         super.viewDidLoad()
-       
         InitializeView()
         
     }
-    
+    ///Check for internet connectivity
+    ///Load data
     override func viewWillAppear(_ animated: Bool)
     {
        CheckConnectivity()
        LoadData()
     }
     
+    
+    ///Set the scroll visibility of collection view
+    ///Set item size of collection view
     func InitializeView()
     {
         TopCollectionView.flashScrollIndicators()
@@ -44,9 +52,13 @@ class HomeViewController: UIViewController,UICollectionViewDataSource,UICollecti
         layout.itemSize = CGSize.init(width: (UIScreen.main.bounds.width-60), height: TopCollectionView.frame.height)
     }
     
+    /// Load all data required for the view
     func LoadData()
     {
+        //Initialize data manager
         let dataManager = DataManager()
+        
+        //Now playing list
         dataManager.GetData(urlType: EnumURLType.NowPlaying, completionHandler: { (data) in
             self.NowPlayingList = data
             self.TopCollectionView.reloadData()
@@ -59,6 +71,8 @@ class HomeViewController: UIViewController,UICollectionViewDataSource,UICollecti
             self.downTV.reloadRows(at: [index], with: UITableViewRowAnimation.fade)
             self.downTV.endUpdates()
         })
+        
+        //Popular list
         dataManager.GetData(urlType: EnumURLType.Popular, completionHandler: { (data) in
             self.PopularList = data
             self.downTV.beginUpdates()
@@ -66,6 +80,8 @@ class HomeViewController: UIViewController,UICollectionViewDataSource,UICollecti
             self.downTV.reloadRows(at: [index], with: UITableViewRowAnimation.fade)
             self.downTV.endUpdates()
         })
+        
+        //Top rated list
         dataManager.GetData(urlType: EnumURLType.TopRated, completionHandler: { (data) in
             self.TopRatedList = data
             self.downTV.beginUpdates()
@@ -73,6 +89,8 @@ class HomeViewController: UIViewController,UICollectionViewDataSource,UICollecti
             self.downTV.reloadRows(at: [index], with: UITableViewRowAnimation.fade)
             self.downTV.endUpdates()
         })
+        
+        //Upcoming list
         dataManager.GetData(urlType: EnumURLType.UpComing, completionHandler: { (data) in
             self.UpComingList = data
             self.downTV.beginUpdates()

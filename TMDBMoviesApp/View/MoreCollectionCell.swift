@@ -10,8 +10,10 @@ import Foundation
 import UIKit
 class MoreCollectionCell: UICollectionViewCell
 {
-        @IBOutlet weak var posterImageView: UIImageView!
+    ///Outlets
+    @IBOutlet weak var posterImageView: UIImageView!
     
+    ///Configure cell details
     func Configure(movie:Movie)
     {
         let url = URL(string:"http://image.tmdb.org/t/p/w200/" + movie.photoURl)
