@@ -48,6 +48,9 @@ class UrlManager: NSObject
     func GetMoviePhotosURL(movieId:String) -> String {
         return "https://api.themoviedb.org/3/movie/\(movieId)/images?api_key=\(ApiKey)&language=en-US"
     }
+    func GetTrailerURL(movieId:String) -> String {
+        return "https://api.themoviedb.org/3/movie/\(movieId)?api_key=\(ApiKey)&append_to_response=videos"
+    }
     
     // MARK: Search URL
     
@@ -75,6 +78,8 @@ class UrlManager: NSObject
             return GetMoviePhotosURL(movieId: movieId)
         case .Search:
             return SearchMoviesURL(query: query, pageNumber: pageNumber)
+        case .Trailer:
+            return GetTrailerURL(movieId: movieId)
         }
     }
 }

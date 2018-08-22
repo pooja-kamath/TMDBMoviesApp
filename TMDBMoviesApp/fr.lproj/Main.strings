@@ -1,0 +1,42 @@
+
+/* Class = "UITextView"; text = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut lab"; ObjectID = "2dF-bX-nph"; */
+"2dF-bX-nph.text" = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut lab";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "5xN-j8-hWw"; */
+"5xN-j8-hWw.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "75q-1z-P5E"; */
+"75q-1z-P5E.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "EIK-da-nIF"; */
+"EIK-da-nIF.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "FT6-Wp-hJb"; */
+"FT6-Wp-hJb.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "Itv-1M-0zo"; */
+"Itv-1M-0zo.text" = "Label";
+
+/* Class = "UILabel"; text = "Budget"; ObjectID = "N9e-3g-9Ml"; */
+"N9e-3g-9Ml.text" = "Budget";
+
+/* Class = "UIButton"; normalTitle = "See All >"; ObjectID = "SvB-cw-CJx"; */
+"SvB-cw-CJx.normalTitle" = "See All >";
+
+/* Class = "UILabel"; text = "Tagline"; ObjectID = "Wpj-Ya-cWX"; */
+"Wpj-Ya-cWX.text" = "Tagline";
+
+/* Class = "UILabel"; text = "Rating"; ObjectID = "eBe-sx-9M0"; */
+"eBe-sx-9M0.text" = "Rating";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "ohc-9f-7Ag"; */
+"ohc-9f-7Ag.text" = "Label";
+
+/* Class = "UILabel"; text = "Release"; ObjectID = "r18-RK-AQm"; */
+"r18-RK-AQm.text" = "Release";
+
+/* Class = "UINavigationItem"; title = "Movies"; ObjectID = "uDT-Md-q88"; */
+"uDT-Md-q88.title" = "Movies";
+
+/* Class = "UILabel"; text = "Now Playing"; ObjectID = "wrg-Ks-GlS"; */
+"wrg-Ks-GlS.text" = "Now Playing";

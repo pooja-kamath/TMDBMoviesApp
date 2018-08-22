@@ -17,5 +17,6 @@ enum EnumURLType
      UpComing,
      Details,
      Photos,
-     Search
+     Search,
+     Trailer
 }

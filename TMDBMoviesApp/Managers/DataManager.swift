@@ -57,5 +57,47 @@ class DataManager: NSObject
         }
         
     }
-    
+    func GetImages(movieId:String,completionHandler:@escaping ([BackDrop]) -> ()) -> Void
+    {
+        let urlManager = UrlManager(apiKey: ApiKey)
+        let url = urlManager.GetURL(urlType:EnumURLType.Photos,movieId: movieId)
+        
+        let networkmanager = NetworkManager()
+        networkmanager.FetchData(url: url)
+        {
+            (responseData) in
+            if((responseData) != nil)
+            {
+                let parser = ParsingManager()
+                let data = parser.ParseImages(data: responseData!)
+                completionHandler(data)
+            }
+            else
+            {
+                //Show error
+            }
+        }
+        
+    }
+    func GetTrailer(urlType : EnumURLType,movieId:String,completionHandler:@escaping ([Trailer]) -> ()) -> Void
+    {
+        let urlManager = UrlManager(apiKey: ApiKey)
+        let url = urlManager.GetURL(urlType: urlType,movieId: movieId)
+        
+        let networkmanager = NetworkManager()
+        networkmanager.FetchData(url: url)
+        {
+            (responseData) in
+            if((responseData) != nil)
+            {
+                let parser = ParsingManager()
+                let data = parser.ParseTrailer(data: responseData!)
+                completionHandler(data)
+            }
+            else
+            {
+                //Show error
+            }
+        }
+    }
 }

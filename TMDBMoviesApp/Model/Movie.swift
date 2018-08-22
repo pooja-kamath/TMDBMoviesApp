@@ -19,7 +19,7 @@ class Movie: NSObject {
     var budget:Int
     var rating:Float
     var tagLine:String
-    
+    var video:Bool
     override init() {
         self.id = ""
         self.title = ""
@@ -30,6 +30,7 @@ class Movie: NSObject {
         self.rating = 0
         self.tagLine = ""
         self.backdropURl = ""
+        self.video = false
     }
     
     init(json : JSON){
@@ -42,7 +43,7 @@ class Movie: NSObject {
         self.budget = json["budget"].intValue
         self.rating = json["vote_average"].floatValue
         self.tagLine = json["tagline"].stringValue
-
+        self.video = json["video"].boolValue
     }
 
 }
